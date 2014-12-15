@@ -233,3 +233,6 @@ usr/idc/clearpad.idc
 etc/firmware/wlan/bcmdhd/bcmdhd.cal
 etc/firmware/wlan/bcmdhd/fw_bcmdhd_apsta.bin
 etc/firmware/wlan/bcmdhd/fw_bcmdhd.bin
+
+# QCOM time stuff
+vendor/lib/libtime_genoff.so
