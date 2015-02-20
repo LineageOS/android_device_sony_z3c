@@ -589,6 +589,11 @@
         <path name="low-latency-playback incall-music" />
     </path>
 
+    <path name="low-latency-playback voice-speaker">
+        <path name="low-latency-playback speaker" />
+        <path name="low-latency-playback" />
+    </path>
+
     <path name="multi-channel-playback hdmi">
         <ctl name="HDMI Mixer MultiMedia2" value="1" />
     </path>
@@ -744,6 +749,10 @@
     <path name="voice-call speaker">
         <ctl name="QUAT_MI2S_RX_Voice Mixer CSVoice" value="1" />
         <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="1" />
+    </path>
+
+    <path name="voice-call voice-speaker">
+        <path name="voice-call speaker" />
     </path>
 
     <path name="voice-call handset">
@@ -1060,6 +1069,7 @@
         <ctl name="SLIM_0_TX Channels" value="One" />
         <ctl name="SLIM TX7 MUX" value="DEC6" />
         <ctl name="DEC6 MUX" value="ADC1" />
+        <ctl name="IIR1 INP1 MUX" value="DEC6" />
     </path>
 
     <path name="adc2">
@@ -1410,8 +1420,8 @@
         <path name="adc1" />
         <!-- 63 % of 19 (range 0 - 19) Register: 0x153 -->
         <ctl name="ADC1 Volume" value="12" />
-        <!-- 66 % of 124 (range 0 - 124) Register: 0x249 -->
-        <ctl name="DEC6 Volume" value="82" />
+        <!-- 81 % of 124 (range 0 - 124) Register: 0x249 -->
+        <ctl name="DEC6 Volume" value="100" />
     </path>
 
     <path name="stereo-mic">
@@ -1585,9 +1595,8 @@
     </path>
 
     <path name="voice-speaker">
-        <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="1" />
-        <ctl name="SLIM_0_RX_Voice Mixer CSVoice" value="0" />
-        <ctl name="QUAT_MI2S_RX_Voice Mixer CSVoice" value="1" />
+        <ctl name="SLIM_0_RX_Voice Mixer CSVoice" value="1" />
+        <ctl name="QUAT_MI2S_RX_Voice Mixer CSVoice" value="0" />
         <ctl name="MultiMedia1 Mixer QUAT_MI2S_TX" value="1" />
         <ctl name="TFA98XX_PARAM_TYPE" value="Speakerphone" />
         <ctl name="TFA98XX_CHANNEL" value="Bottom" />
@@ -1820,14 +1829,14 @@
         <ctl name="AIF1_CAP Mixer SLIM TX8" value="1" />
         <ctl name="SLIM TX7 MUX" value="DEC6" />
         <ctl name="DEC6 MUX" value="ADC1" />
-        <!-- 65 % of 124 (range 0 - 124) Register: 0x249 -->
-        <ctl name="DEC6 Volume" value="81" />
+        <!-- 81 % of 124 (range 0 - 124) Register: 0x249 -->
+        <ctl name="DEC6 Volume" value="100" />
         <!-- 63 % of 19 (range 0 - 19) Register: 0x153 -->
         <ctl name="ADC1 Volume" value="12" />
         <ctl name="SLIM TX8 MUX" value="DEC3" />
         <ctl name="DEC3 MUX" value="ADC4" />
-        <!-- 68 % of 124 (range 0 - 124) Register: 0x231 -->
-        <ctl name="DEC3 Volume" value="84" />
+        <!-- 81 % of 124 (range 0 - 124) Register: 0x231 -->
+        <ctl name="DEC3 Volume" value="100" />
         <!-- 63 % of 19 (range 0 - 19) Register: 0x15F -->
         <ctl name="ADC4 Volume" value="12" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
