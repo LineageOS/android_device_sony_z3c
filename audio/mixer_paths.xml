@@ -3754,4 +3754,12 @@
         <path name="anc-mux-on" />
     </path>
 
+    <!-- Extra for CM use -->
+
+    <path name="voice-rx">
+    </path>
+
+    <path name="voice-tx">
+    </path>
+
 </mixer>
