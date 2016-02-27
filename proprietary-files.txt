@@ -29,5 +29,3 @@ etc/tfa98xx/VoiceCallSpeaker_btm.preset
 etc/tfa98xx/VoiceCallSpeaker_top.eq
 etc/tfa98xx/VoiceCallSpeaker_top.preset
 
-# Touchscreen
-usr/idc/clearpad.idc
