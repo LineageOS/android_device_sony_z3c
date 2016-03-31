@@ -187,7 +187,7 @@
     <ctl name="MultiMedia2 Mixer INTERNAL_FM_TX" value="0" />
     <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia5" value="0" />
-    <ctl name="Internal FM RX Volume" value="0" />
+    <ctl name="Internal FM RX Volume" value="1" />
     <ctl name="MultiMedia2 Mixer SLIM_0_TX" value="0" />
     <ctl name="SLIM_0_RX_Voice Mixer Voice Stub" value="0" />
     <ctl name="QUAT_MI2S_RX_Voice Mixer Voice Stub" value="0" />
@@ -1171,7 +1171,7 @@
     </path>
 
     <path name="audio-record capture-fm">
-        <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="1" />
+        <ctl name="MultiMedia1 Mixer INTERNAL_FM_TX" value="1" />
     </path>
 
     <path name="audio-record ssr-qmic">
@@ -1195,7 +1195,7 @@
     </path>
 
     <path name="fm-virtual-record capture-fm">
-        <ctl name="MultiMedia2 Mixer SLIM_0_TX" value="1" />
+        <ctl name="MultiMedia2 Mixer INTERNAL_FM_TX" value="1" />
     </path>
 
     <path name="voice-call">
