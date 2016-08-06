@@ -22,4 +22,4 @@ export DEVICE=$(basename $FP)
 export VENDOR=$(basename $(dirname $FP))
 export DEVICE_COMMON=shinano-common
 
-./../$DEVICE_COMMON/extract-files.sh $@
+./../$DEVICE_COMMON/setup-makefiles.sh $@
