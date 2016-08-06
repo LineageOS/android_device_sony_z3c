@@ -22,4 +22,4 @@ export DEVICE_COMMON=shinano-common
 export PLATFORM_COMMON=msm8974-common
 export VENDOR=sony
 
-./../$PLATFORM_COMMON/extract-files.sh $@
+./../$PLATFORM_COMMON/setup-makefiles.sh $@
