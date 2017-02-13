@@ -21,6 +21,8 @@ include device/sony/shinano-common/BoardConfigCommon.mk
 # Assert
 TARGET_OTA_ASSERT_DEVICE := D5803,D5833,z3c
 
+TARGET_BOOTLOADER_BOARD_NAME := D5803
+
 TARGET_SPECIFIC_HEADER_PATH += device/sony/z3c/include
 
 BOARD_HARDWARE_CLASS += device/sony/z3c/cmhw
