@@ -11,3 +11,10 @@ ro.qc.sdk.camera.facialproc=false
 ro.qc.sdk.gestures.camera=false
 camera.disable_zsl_mode=1 
 persist.camera.HAL3.enabled=0
+
+# Dalvik
+dalvik.vm.boot-dex2oat-threads=4
+dalvik.vm.dex2oat-threads=2
+dalvik.vm.image-dex2oat-threads=4
+
+
