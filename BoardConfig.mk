@@ -30,6 +30,9 @@ BOARD_HARDWARE_CLASS += device/sony/z3c/cmhw
 # Kernel properties
 TARGET_KERNEL_CONFIG := lineageos_shinano_aries_defconfig
 
+# Snapdragon compiler
+TARGET_USE_SDCLANG := true
+
 # Partition information
 BOARD_VOLD_MAX_PARTITIONS := 25
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12656242688 # 12656259072 - 16384
