@@ -28,7 +28,7 @@ TARGET_SPECIFIC_HEADER_PATH += device/sony/z3c/include
 BOARD_HARDWARE_CLASS += device/sony/z3c/cmhw
 
 # Kernel properties
-TARGET_KERNEL_CONFIG := cm_shinano_aries_defconfig
+TARGET_KERNEL_CONFIG := lineageos_shinano_aries_defconfig
 
 # Partition information
 BOARD_VOLD_MAX_PARTITIONS := 25
