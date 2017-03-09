@@ -1,2 +1,2 @@
-add_lunch_combo cm_z3c-eng
-add_lunch_combo cm_z3c-userdebug
+add_lunch_combo lineage_z3c-eng
+add_lunch_combo lineage_z3c-userdebug
