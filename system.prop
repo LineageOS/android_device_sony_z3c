@@ -20,3 +20,10 @@ dalvik.vm.image-dex2oat-threads=4
 # Misc
 persist.data.qmi.adb_logmask=0
 
+# Audio
+af.fast_track_multiplier=1
+audio_hal.period_size=192
+qcom.hw.aac.encoder=true
+audio.offload.pcm.16bit.enable=true
+audio.offload.pcm.24bit.enable=true
+audio.offload.video=true
