@@ -27,3 +27,5 @@ qcom.hw.aac.encoder=true
 audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
 audio.offload.video=true
+persist.audio.handset.mic.type=digital
+
