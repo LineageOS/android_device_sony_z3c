@@ -29,3 +29,12 @@ audio.offload.pcm.24bit.enable=true
 audio.offload.video=true
 persist.audio.handset.mic.type=digital
 
+# Display
+debug.sf.hw=1
+debug.egl.hw=1
+debug.composition.type=c2d
+debug.mdpcomp.4k2kSplit=1
+debug.mdpcomp.logs=0
+debug.mdpcomp.4k2kSplit=true
+dev.pm.dyn_samplingrate=1
+qcom.hw.aac.encoder=true
