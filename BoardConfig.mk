@@ -37,6 +37,9 @@ TARGET_USE_SDCLANG := true
 BOARD_VOLD_MAX_PARTITIONS := 25
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12656242688 # 12656259072 - 16384
 
+#D2TW
+TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/clearpad/wakeup_gesture"
+
 # SELinux
 BOARD_SEPOLICY_DIRS += \
     device/sony/z3c/sepolicy
