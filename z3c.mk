@@ -64,6 +64,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/bcmdhd.cal:system/etc/wifi/bcmdhd.cal
 
+# LCD
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.sf.lcd_density=320
+
+# USB path
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.usb.pid_suffix=1BB
+
 # call dalvik heap config
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
