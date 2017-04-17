@@ -21,62 +21,66 @@
      for different hardware and product builds. -->
 <resources>
 
-    <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
-         The N entries of this array define N  1 zones as follows:
-         Zone 0:        0 <= LUX < array[0]
-         Zone 1:        array[0] <= LUX < array[1]
+   <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
+         The N entries of this array define N + 1 control points as follows:
+         (1-based arrays)
+         Point 1:            (0, value[1]):             lux <= 0
+         Point 2:     (level[1], value[2]):  0        < lux <= level[1]
+         Point 3:     (level[2], value[3]):  level[2] < lux <= level[3]
          ...
-         Zone N:        array[N - 1] <= LUX < array[N]
-         Zone N + 1     array[N] <= LUX < infinity
+         Point N+1: (level[N], value[N+1]):  level[N] < lux
+         The control points must be strictly increasing.  Each control point
+         corresponds to an entry in the brightness backlight values arrays.
+         For example, if LUX == level[1] (first element of the levels array)
+         then the brightness will be determined by value[2] (second element
+         of the brightness values array).
+         Spline interpolation is used to determine the auto-brightness
+         backlight values for LUX levels between these control points.
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>64</item>
-        <item>128</item>
-        <item>170</item>
-        <item>220</item>
-        <item>256</item>
-        <item>384</item>
-        <item>512</item>
-        <item>768</item>
-        <item>1024</item>
-        <item>1536</item>
-        <item>2048</item>
-        <item>4096</item>
+        <item>5</item>
+        <item>15</item>
+        <item>50</item>
+        <item>100</item>
+        <item>200</item>
+        <item>400</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>5000</item>
+        <item>10000</item>
+        <item>30000</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
          in the config_autoBrightnessLevels array.  This array should have size one greater
          than the size of the config_autoBrightnessLevels array.
+         The brightness values must be between 0 and 255 and be non-decreasing.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>10</item>   <!--    0 -->
-        <item>32</item>   <!--   64 -->
-        <item>64</item>   <!--  128 -->
-        <item>80</item>   <!--  170 -->
-        <item>96</item>   <!--  220 -->
-        <item>112</item>  <!--  256 -->
-        <item>128</item>  <!--  384 -->
-        <item>144</item>  <!--  512 -->
-        <item>176</item>  <!--  768 -->
-        <item>196</item>  <!-- 1024 -->
-        <item>208</item>  <!-- 1536 -->
-        <item>224</item>  <!-- 2048 -->
-        <item>255</item>  <!-- 4096 -->
+        <item>7</item>    <!-- 0     -->
+        <item>12</item>   <!-- 5     -->
+        <item>21</item>   <!-- 15    -->
+        <item>32</item>   <!-- 50    -->
+        <item>42</item>   <!-- 100   -->
+        <item>49</item>   <!-- 200   -->
+        <item>58</item>   <!-- 400   -->
+        <item>68</item>   <!-- 1000  -->
+        <item>114</item>  <!-- 2000  -->
+        <item>158</item>  <!-- 3000  -->
+        <item>219</item>  <!-- 5000  -->
+        <item>249</item>  <!-- 10000 -->
+        <item>255</item>  <!-- 30000 -->
     </integer-array>
 
     <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
-    <integer name="config_screenBrightnessSettingMinimum">10</integer>
-
-    <!-- Screen brightness used to dim the screen while dozing in a very low power state.
-         May be less than the minimum allowed brightness setting
-         that can be set by the user. -->
-    <integer name="config_screenBrightnessDoze">5</integer>
+    <integer name="config_screenBrightnessSettingMinimum">7</integer>
 
     <!-- Screen brightness used to dim the screen when the user activity
          timeout expires.  May be less than the minimum allowed brightness setting
          that can be set by the user. -->
-    <integer name="config_screenBrightnessDim">10</integer>
+    <integer name="config_screenBrightnessDim">7</integer>
 
     <!-- Minimum allowable screen brightness to use in a very dark room.
          This value sets the floor for the darkest possible auto-brightness
@@ -85,37 +89,28 @@
          some range of adjustment to dim the screen further than usual in very
          dark rooms. The contents of the screen must still be clearly visible
          in darkness (although they may not be visible in a bright room). -->
-    <integer name="config_screenBrightnessDark">5</integer>
+    <integer name="config_screenBrightnessDark">7</integer>
 
-    <!-- Hardware 'face' keys present on the device, stored as a bit field.
-         This integer should equal the sum of the corresponding value for each
-         of the following keys present:
-             1 - Home
-             2 - Back
-             4 - Menu
-             8 - Assistant (search)
-            16 - App switch
-            32 - Camera
-            64 - Volume rocker
-         For example, a device with Home, Back and Menu keys would set this
-         config to 7. -->
-    <integer name="config_deviceHardwareKeys">96</integer>
+    <!-- Screen brightness used to dim the screen while dozing in a very low power state.
+         May be less than the minimum allowed brightness setting
+         that can be set by the user. -->
+    <integer name="config_screenBrightnessDoze">7</integer>
 
-    <!-- Hardware keys present on the device with the ability to wake, stored as a bit field.
-         This integer should equal the sum of the corresponding value for each
-         of the following keys present:
-             1 - Home
-             2 - Back
-             4 - Menu
-             8 - Assistant (search)
-            16 - App switch
-            32 - Camera
-            64 - Volume rocker
-         For example, a device with Home, Back and Menu keys would set this
-         config to 7. -->
-    <integer name="config_deviceHardwareWakeKeys">96</integer>
+    <!-- Stability requirements in milliseconds for accepting a new brightness level.  This is used
+         for debouncing the light sensor.  Different constants are used to debounce the light sensor
+         when adapting to brighter or darker environments.  This parameter controls how quickly
+         brightness changes occur in response to an observed change in light level that exceeds the
+         hysteresis threshold. -->
+    <integer name="config_autoBrightnessBrighteningLightDebounce">3500</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">5500</integer>
 
     <!-- Device supports LED flashlight
     <bool name="config_enableTorch">true</bool> -->
+
+    <!-- Experimental autobrightness config -->
+    <integer translatable="false" name="config_brightness_ramp_rate_slow">80</integer>
+    <integer name="config_autoBrightnessLightSensorRate">1000</integer>
+    <integer name="config_autoBrightnessInitialLightSensorRate">250</integer>
+    <integer name="config_autoBrightnessAmbientLightHorizon">5000</integer>
 
 </resources>
