@@ -2320,39 +2320,40 @@
 
     <path name="voice-handset">
         <path name="handset" />
+        <path name="handset-voice-cfg" />
     </path>
 
     <path name="voice-handset-hac">
-        <path name="handset" />
+        <path name="voice-handset" />
     </path>
 
     <path name="voice-handset-eq1">
-        <path name="handset" />
+        <path name="voice-handset" />
     </path>
 
     <path name="voice-handset-eq2">
-        <path name="handset" />
+        <path name="voice-handset" />
     </path>
 
     <path name="voice-handset-wv">
-        <path name="handset" />
+        <path name="voice-handset" />
     </path>
 
     <path name="voice-handset-eq1-wv">
-        <path name="handset" />
+        <path name="voice-handset" />
     </path>
 
     <path name="voice-handset-eq2-wv">
-        <path name="handset" />
+        <path name="voice-handset" />
     </path>
 
     <path name="voice-handset-tmus">
-        <path name="handset" />
+        <path name="voice-handset" />
     </path>
 
     <path name="voice-speaker">
         <ctl name="TFA98XX_PARAM_TYPE" value="Speakerphone" />
-        <ctl name="TFA98XX_CHANNEL" value="Bottom" />
+        <ctl name="TFA98XX_CHANNEL" value="Both" />
         <ctl name="TFA98XX_SPKR_AMP" value="1" />
     </path>
 
