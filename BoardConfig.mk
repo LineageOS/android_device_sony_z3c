@@ -18,14 +18,16 @@ include device/sony/shinano-common/BoardConfigCommon.mk
 # inherit from the proprietary version
 #-include vendor/sony/z3c/BoardConfigVendor.mk
 
+DEVICE_PATH := device/sony/z3c
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := D5803,D5833,z3c,aries
 
 TARGET_BOOTLOADER_BOARD_NAME := D5803
 
-TARGET_SPECIFIC_HEADER_PATH += device/sony/z3c/include
+TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_PATH)/include
 
-BOARD_HARDWARE_CLASS += device/sony/z3c/cmhw
+BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/cmhw
 
 # Kernel properties
 TARGET_KERNEL_CONFIG := lineageos_shinano_aries_defconfig
@@ -42,4 +44,4 @@ TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/clearpad/wakeup_gesture"
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
-    device/sony/z3c/sepolicy
+    $(DEVICE_PATH)/sepolicy

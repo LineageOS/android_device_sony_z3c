@@ -25,10 +25,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
-# This device is xhdpi.  However the platform doesn't
-# currently contain all of the bitmaps at xhdpi density so
-# we do this little trick to fall back to the hdpi version
-# if the xhdpi doesn't exist.
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
@@ -43,20 +39,20 @@ PRODUCT_COPY_FILES += \
 
 # NFC
 PRODUCT_COPY_FILES += \
-   $(LOCAL_PATH)/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-   $(LOCAL_PATH)/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
+   $(LOCAL_PATH)/configs/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+   $(LOCAL_PATH)/configs/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
 
 # Sensors
 PRODUCT_COPY_FILES += \
-   $(LOCAL_PATH)/sensor_def_qcomdev.conf:system/etc/sensor_def_qcomdev.conf
+   $(LOCAL_PATH)/configs/sensor_def_qcomdev.conf:system/etc/sensor_def_qcomdev.conf
 
 # Thermal manager
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/thermanager.xml:system/etc/thermanager.xml
+    $(LOCAL_PATH)/configs/thermanager.xml:system/etc/thermanager.xml
 
 # Wifi
 PRODUCT_COPY_FILES += \
-   $(LOCAL_PATH)/bcmdhd.cal:system/etc/wifi/bcmdhd.cal
+   $(LOCAL_PATH)/configs/bcmdhd.cal:system/etc/wifi/bcmdhd.cal
 
 # LCD
 PRODUCT_PROPERTY_OVERRIDES += \
