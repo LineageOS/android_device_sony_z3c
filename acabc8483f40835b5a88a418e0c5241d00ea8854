@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_9b9d3e5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2017-07-04T06:27:25Z",
+      "side": 1,
+      "message": "From what I remember, stock doesn\u0027t even use these values, not sure if that has changed in the recent releases but I doubt that.\n\nSo I would recommend to use what works best instead of just copying stock here.",
+      "revId": "acabc8483f40835b5a88a418e0c5241d00ea8854",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
