@@ -1238,6 +1238,7 @@
 
     <path name="voice-call speaker">
         <path name="voice-call handset" />
+        <path name="voice-external-echo" />
     </path>
 
     <path name="voice-call hdmi">
@@ -1294,6 +1295,7 @@
 
     <path name="voice2-call speaker">
         <path name="voice2-call handset" />
+        <path name="voice-external-echo" />
     </path>
 
     <path name="voice2-call hdmi">
@@ -1522,6 +1524,7 @@
 
     <path name="volte-call speaker">
           <path name="volte-call handset" />
+          <path name="voice-external-echo" />
     </path>
 
     <path name="volte-call hdmi">
@@ -1584,6 +1587,7 @@
 
     <path name="vowlan-call speaker">
         <path name="vowlan-call handset" />
+        <path name="voice-external-echo" />
     </path>
 
     <path name="vowlan-call speaker-and-headphones">
@@ -1624,6 +1628,7 @@
 
     <path name="compress-voip-call speaker">
          <path name="compress-voip-call handset" />
+         <path name="voice-external-echo" />
      </path>
 
     <path name="compress-voip-call speaker-and-headphones">
@@ -1655,6 +1660,7 @@
 
     <path name="qchat-call speaker">
          <path name="qchat-call handset" />
+         <path name="voice-external-echo" />
     </path>
 
     <path name="qchat-call bt-sco">
