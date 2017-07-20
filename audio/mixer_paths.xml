@@ -71,7 +71,6 @@
     <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="0" />
     <ctl name="Voice_Tx Mixer SEC_AUX_PCM_TX_Voice" value="0" />
     <ctl name="VOC_EXT_EC MUX" value="NONE" />
-    <ctl name="AUDIO_EXT_EC MUX" value="NONE" />
     <!-- Audio BTSCO -->
     <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4" value="0" />
@@ -1227,6 +1226,7 @@
     <path name="voice-call speaker">
         <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
         <path name="voice-call handset" />
+	<path name="voice-external-echo" />
     </path>
 
     <path name="voice-call hdmi">
@@ -1510,6 +1510,7 @@
     <path name="volte-call speaker">
         <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
         <path name="volte-call handset" />
+	<path name="voice-external-echo" />
     </path>
 
     <path name="volte-call hdmi">
@@ -1573,6 +1574,7 @@
     <path name="vowlan-call speaker">
         <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
         <path name="vowlan-call handset" />
+	<path name="voice-external-echo" />
     </path>
 
     <path name="vowlan-call speaker-and-headphones">
@@ -1614,6 +1616,7 @@
     <path name="compress-voip-call speaker">
         <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
         <path name="compress-voip-call handset" />
+	<path name="voice-external-echo" />
     </path>
 
     <path name="compress-voip-call speaker-and-headphones">
@@ -1646,6 +1649,7 @@
     <path name="qchat-call speaker">
         <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
         <path name="qchat-call handset" />
+	<path name="voice-external-echo" />
     </path>
 
     <path name="qchat-call bt-sco">
