@@ -3763,7 +3763,7 @@
         <ctl name="ANC1 MUX" value="ADC3" />
         <ctl name="ANC2 MUX" value="ADC2" />
     </path>
-
+a
     <path name="anc-mux-off">
         <ctl name="ANC1 MUX" value="ZERO" />
         <ctl name="ANC2 MUX" value="ZERO" />
