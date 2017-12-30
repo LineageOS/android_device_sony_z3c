@@ -50,7 +50,6 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 # Audio configs
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_policy.conf:system/vendor/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/vendor/etc/mixer_paths.xml \
     $(LOCAL_PATH)/audio/mixer_paths_auxpcm.xml:system/vendor/etc/mixer_paths_auxpcm.xml
 
