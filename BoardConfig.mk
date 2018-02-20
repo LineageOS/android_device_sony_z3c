@@ -1,3 +1,4 @@
+#
 # Copyright (C) 2013-2016 The CyanogenMod Project
 #           (C) 2017-2019 The LineageOS Project
 #
@@ -12,6 +13,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
 # inherit from the shinano-common
 include device/sony/shinano-common/BoardConfigCommon.mk
