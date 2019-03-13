@@ -25,7 +25,7 @@ TARGET_OTA_ASSERT_DEVICE := D5803,D5833,z3c,aries
 
 TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_PATH)/include
 
-BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/cmhw
+BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/lineagehw
 
 # Kernel properties
 TARGET_KERNEL_CONFIG := lineageos_shinano_aries_defconfig
