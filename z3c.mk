@@ -51,7 +51,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += \
+    $(DEVICE_PATH)/overlay \
+    $(DEVICE_PATH)/overlay-lineage
 
 # Permissions
 PRODUCT_COPY_FILES += \
