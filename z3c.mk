@@ -18,9 +18,6 @@ $(call inherit-product, device/sony/shinano-common/shinano.mk)
 
 DEVICE_PATH := device/sony/z3c
 
-# Include non-opensource parts
-$(call inherit-product, vendor/sony/z3c/z3c-vendor.mk)
-
 # Audio configs
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
@@ -74,3 +71,6 @@ PRODUCT_COPY_FILES += \
 # Wifi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/bcmdhd.cal:$(TARGET_COPY_OUT_VENDOR)/firmware/bcmdhd.cal
+
+# Call the proprietary setup
+$(call inherit-product, vendor/sony/z3c/z3c-vendor.mk)
