@@ -21,9 +21,6 @@ DEVICE_PATH := device/sony/z3c
 # Assert
 TARGET_OTA_ASSERT_DEVICE := z3c
 
-# Device-specific properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-
 # HIDL
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
