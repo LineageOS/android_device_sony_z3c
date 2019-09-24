@@ -31,6 +31,7 @@ TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_PATH)/include
 
 # Kernel properties
 TARGET_KERNEL_CONFIG := lineageos_shinano_aries_defconfig
+TARGET_EXFAT_DRIVER := exfat
 
 # Partition information
 BOARD_VOLD_MAX_PARTITIONS := 25
