@@ -170,7 +170,6 @@
     <ctl name="CLASS_H_DSM MUX" value="ZERO" />
     <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia4" value="0" />
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="0" />
-    <ctl name="AFE_PCM_RX Audio Mixer MultiMedia3" value="0" />
     <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia4" value="0" />
     <ctl name="HDMI Mixer MultiMedia4" value="0" />
     <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4" value="0" />
@@ -812,41 +811,6 @@
         <ctl name="SLIM_0_RX SampleRate" value="KHZ_96" />
         <path name="low-latency-playback" />
     </path>
-     
-     <path name="audio-ull-playback">
-        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia3" value="1" />
-    </path>
-
-    <path name="audio-ull-playback hdmi">
-        <ctl name="HDMI Mixer MultiMedia3" value="1" />
-    </path>
-
-    <path name="audio-ull-playback speaker-and-hdmi">
-        <path name="audio-ull-playback hdmi" />
-        <path name="audio-ull-playback" />
-    </path>
-
-    <path name="audio-ull-playback bt-sco">
-        <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3" value="1" />
-    </path>
-
-    <path name="audio-ull-playback bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
-        <path name="audio-ull-playback bt-sco" />
-    </path>
-
-    <path name="audio-ull-playback afe-proxy">
-        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia3" value="1" />
-    </path>
-
-    <path name="audio-ull-playback usb-headphones">
-        <path name="audio-ull-playback afe-proxy" />
-    </path>
-
-    <path name="audio-ull-playback speaker-and-usb-headphones">
-        <path name="audio-ull-playback usb-headphones" />
-        <path name="audio-ull-playback" />
-    </path>
 
     <path name="multi-channel-playback hdmi">
         <ctl name="HDMI Mixer MultiMedia2" value="1" />
@@ -997,6 +961,14 @@
 
     <path name="compress-offload-playback speaker-and-usb-headphones">
         <path name="compress-offload-playback usb-headphones" />
+        <path name="compress-offload-playback" />
+    </path>
+
+    <path name="compress-offload-playback headphones-hi-res">
+        <path name="compress-offload-playback" />
+    </path>
+
+    <path name="compress-offload-playback headphones-hi-res-regulation">
         <path name="compress-offload-playback" />
     </path>
 
@@ -1246,10 +1218,6 @@
         <ctl name="MultiMedia2 Mixer SLIM_0_TX" value="1" />
     </path>
 
-    <path name="low-latency-record">
-        <ctl name="MultiMedia5 Mixer SLIM_0_TX" value="1" />
-    </path>
-
     <path name="voice-call">
         <ctl name="SLIM_0_RX_Voice Mixer CSVoice" value="1" />
         <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="1" />
@@ -1260,8 +1228,11 @@
         <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="1" />
     </path>
 
-    <path name="voice-call speaker">
+    <path name="voice-external-echo">
         <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
+    </path>
+
+    <path name="voice-call speaker">
         <path name="voice-call handset" />
     </path>
 
@@ -1318,7 +1289,6 @@
     </path>
 
     <path name="voice2-call speaker">
-        <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
         <path name="voice2-call handset" />
     </path>
 
@@ -1363,6 +1333,9 @@
         <ctl name="QUAT_MI2S_RX_Voice Mixer Voice Stub" value="1" />
         <ctl name="Voice Stub Tx Mixer SLIM_0_TX" value="1" />
         <ctl name="QUAT_MI2S_RX Port Mixer SLIM_0_TX" value="1" />
+    </path>
+
+    <path name="play-fm speaker-and-headphones">
     </path>
 
     <path name="play-fm usb-headphones">
@@ -1544,8 +1517,7 @@
     </path>
 
     <path name="volte-call speaker">
-        <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
-        <path name="volte-call handset" />
+          <path name="volte-call handset" />
     </path>
 
     <path name="volte-call hdmi">
@@ -1607,7 +1579,6 @@
     </path>
 
     <path name="vowlan-call speaker">
-        <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
         <path name="vowlan-call handset" />
     </path>
 
@@ -1648,9 +1619,8 @@
     </path>
 
     <path name="compress-voip-call speaker">
-        <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
-        <path name="compress-voip-call handset" />
-    </path>
+         <path name="compress-voip-call handset" />
+     </path>
 
     <path name="compress-voip-call speaker-and-headphones">
         <path name="compress-voip-call" />
@@ -1680,8 +1650,7 @@
     </path>
 
     <path name="qchat-call speaker">
-        <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
-        <path name="qchat-call handset" />
+         <path name="qchat-call handset" />
     </path>
 
     <path name="qchat-call bt-sco">
@@ -2127,36 +2096,36 @@
         <ctl name="SLIM TX7 MUX" value="DEC6" />
         <ctl name="DEC6 MUX" value="ADC1" />
         <!-- 66 % of 124 (range 0 - 124) Register: 0x229 -->
-        <ctl name="DEC6 Volume" value="81" />
+        <ctl name="DEC6 Volume" value="84" />
         <ctl name="SLIM TX8 MUX" value="DEC3" />
         <ctl name="DEC3 MUX" value="ADC4" />
         <!-- 66 % of 124 (range 0 - 124) Register: 0x231 -->
-        <ctl name="DEC3 Volume" value="80" />
+        <ctl name="DEC3 Volume" value="84" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 
     <path name="stereo-mic">
         <path name="stereo-mic-common" />
         <ctl name="ADC1 Volume" value="12" />
-        <ctl name="ADC4 Volume" value="11" />
+        <ctl name="ADC4 Volume" value="12" />
     </path>
 
     <path name="stereo-mic-gain-low">
         <path name="stereo-mic-common" />
         <ctl name="ADC1 Volume" value="12" />
-        <ctl name="ADC4 Volume" value="11" />
+        <ctl name="ADC4 Volume" value="12" />
     </path>
 
     <path name="stereo-mic-gain-mid">
         <path name="stereo-mic-common" />
         <ctl name="ADC1 Volume" value="15" />
-        <ctl name="ADC4 Volume" value="14" />
+        <ctl name="ADC4 Volume" value="15" />
     </path>
 
     <path name="stereo-mic-gain-high">
         <path name="stereo-mic-common" />
         <ctl name="ADC1 Volume" value="19" />
-        <ctl name="ADC4 Volume" value="18" />
+        <ctl name="ADC4 Volume" value="19" />
     </path>
 
     <path name="mono-mic-split-stereo-common">
@@ -2176,7 +2145,7 @@
         <ctl name="ADC4 Volume" value="12" />
     </path>
 
-   <path name="mono-mic-split-stereo-gain-low">
+    <path name="mono-mic-split-stereo-gain-low">
         <path name="mono-mic-split-stereo-common" />
         <ctl name="ADC4 Volume" value="12" />
     </path>
@@ -2306,6 +2275,7 @@
     </path>
 
     <path name="headset-mic">
+        <ctl name="AUDIO_REF_EC_UL1 MUX" value="None" />
         <!--80 % of 124 (rounded) register: 0x241-->
         <ctl name="DEC5 Volume" value="99" />
         <!--42 % of 19 (rounded) register: 0x155-->
@@ -2356,40 +2326,39 @@
 
     <path name="voice-handset">
         <path name="handset" />
-        <path name="handset-voice-cfg" />
     </path>
 
     <path name="voice-handset-hac">
-        <path name="voice-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-handset-eq1">
-        <path name="voice-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-handset-eq2">
-        <path name="voice-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-handset-wv">
-        <path name="voice-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-handset-eq1-wv">
-        <path name="voice-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-handset-eq2-wv">
-        <path name="voice-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-handset-tmus">
-        <path name="voice-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-speaker">
         <ctl name="TFA98XX_PARAM_TYPE" value="Speakerphone" />
-        <ctl name="TFA98XX_CHANNEL" value="Both" />
+        <ctl name="TFA98XX_CHANNEL" value="Bottom" />
         <ctl name="TFA98XX_SPKR_AMP" value="1" />
     </path>
 
@@ -2642,36 +2611,36 @@
         <ctl name="SLIM TX7 MUX" value="DEC6" />
         <ctl name="DEC6 MUX" value="ADC1" />
         <!-- 65 % of 124 (range 0 - 124) Register: 0x249 -->
-        <ctl name="DEC6 Volume" value="81" />
+        <ctl name="DEC6 Volume" value="84" />
         <ctl name="SLIM TX8 MUX" value="DEC3" />
         <ctl name="DEC3 MUX" value="ADC4" />
         <!-- 68 % of 124 (range 0 - 124) Register: 0x231 -->
-        <ctl name="DEC3 Volume" value="80" />
+        <ctl name="DEC3 Volume" value="84" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
 
     <path name="camcorder-mic">
         <path name="camcorder-mic-common" />
         <ctl name="ADC1 Volume" value="12" />
-        <ctl name="ADC4 Volume" value="11" />
+        <ctl name="ADC4 Volume" value="12" />
     </path>
 
     <path name="camcorder-mic-gain-low">
         <path name="camcorder-mic-common" />
         <ctl name="ADC1 Volume" value="12" />
-        <ctl name="ADC4 Volume" value="11" />
+        <ctl name="ADC4 Volume" value="12" />
     </path>
 
     <path name="camcorder-mic-gain-mid">
         <path name="camcorder-mic-common" />
         <ctl name="ADC1 Volume" value="15" />
-        <ctl name="ADC4 Volume" value="14" />
+        <ctl name="ADC4 Volume" value="15" />
     </path>
 
     <path name="camcorder-mic-gain-high">
         <path name="camcorder-mic-common" />
         <ctl name="ADC1 Volume" value="19" />
-        <ctl name="ADC4 Volume" value="18" />
+        <ctl name="ADC4 Volume" value="19" />
     </path>
 
     <path name="hdmi-tx">
@@ -3032,6 +3001,42 @@
         <ctl name="IIR2 INP1 Volume" value="87" />
     </path>
 
+    <path name="binaural2-mic">
+        <!-- 120dBSPLpeak & -33dBV/Pa so mic gain 10.5dB so ADCx VOL = 7 -->
+        <ctl name="ADC3 Volume" value="13" />
+        <ctl name="ADC2 Volume" value="13" />
+        <ctl name="IIR1 INP1 Volume" value="87" />
+        <ctl name="IIR2 INP1 Volume" value="87" />
+        <path name="binaural-mic-common" />
+    </path>
+
+    <path name="binaural2-mic-gain-high">
+        <!-- 93dBSPLpeak & -33dBV/Pa so mic gain 28.5dB so ADCx VOL = 19 -->
+        <ctl name="ADC3 Volume" value="18" />
+        <ctl name="ADC2 Volume" value="18" />
+        <ctl name="IIR1 INP1 Volume" value="69" />
+        <ctl name="IIR2 INP1 Volume" value="69" />
+        <path name="binaural-mic-common" />
+    </path>
+
+    <path name="binaural2-mic-gain-mid">
+        <!-- 112dBSPLpeak & -33dBV/Pa so mic gain 18dB so ADCx VOL = 12 -->
+        <ctl name="ADC3 Volume" value="17" />
+        <ctl name="ADC2 Volume" value="17" />
+        <ctl name="IIR1 INP1 Volume" value="80" />
+        <ctl name="IIR2 INP1 Volume" value="80" />
+        <path name="binaural-mic-common" />
+    </path>
+
+    <path name="binaural2-mic-gain-low">
+        <!-- 120dBSPLpeak & -33dBV/Pa so mic gain 10.5dB so ADCx VOL = 7 -->
+        <ctl name="ADC3 Volume" value="5" />
+        <ctl name="ADC2 Volume" value="5" />
+        <ctl name="IIR1 INP1 Volume" value="87" />
+        <ctl name="IIR2 INP1 Volume" value="87" />
+        <path name="binaural-mic-common" />
+    </path>
+
     <path name="handset-stereo-dmic-ef-liquid">
         <path name="speaker-dmic-endfire-liquid" />
     </path>
@@ -3235,33 +3240,119 @@
     <!--             SOMC DNC devices                  -->
     <!-- ********************************************* -->
 
-    <path name="anc-nc-headphone">
+    <path name="anc-initial">
+        <ctl name="RX1 MIX1 INP1" value="ZERO" />
+        <ctl name="RX2 MIX1 INP1" value="ZERO" />
+        <ctl name="CLASS_H_DSM MUX" value="ZERO" />
+        <ctl name="HPHL DAC Switch" value="0" />
+        <ctl name="HPHR DAC Switch" value="0" />
+        <ctl name="COMP1 Switch" value="0" />
+        <ctl name="HPHL Volume" value="20" />
+        <ctl name="HPHR Volume" value="20" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
     </path>
 
-    <path name="anc-nce-headphone">
+    <!-- ============================================= -->
+    <!--    common sequence for non call devices       -->
+    <!-- ============================================= -->
+
+    <path name="anc-off">
+        <ctl name="ANC1 MUX" value="ZERO" />
+        <ctl name="ANC2 MUX" value="ZERO" />
+        <ctl name="ADC3 Volume" value="0" />
+        <ctl name="ADC2 Volume" value="0" />
+        <ctl name="ANC1 FB MUX" value="ZERO" />
+        <ctl name="ANC Function" value="OFF" />
     </path>
 
-    <path name="anc-nc-headphone-hi-res">
+    <path name="anc-on">
+        <ctl name="ANC Function" value="ON" />
+        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+        <ctl name="SLIM_0_RX Channels" value="Two" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
+        <ctl name="HPHL DAC Switch" value="1" />
+        <ctl name="HPHR DAC Switch" value="1" />
+        <ctl name="COMP1 Switch" value="0" />
+        <ctl name="HPHL Volume" value="20" />
+        <ctl name="HPHR Volume" value="20" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
+        <ctl name="ADC3 Volume" value="10" />
+        <ctl name="ADC2 Volume" value="10" />
+        <ctl name="ANC1 FB MUX" value="EAR_HPH_L" />
     </path>
 
-    <path name="anc-nce-headphone-hi-res">
+    <path name="anc-on-regulation">
+        <ctl name="ANC Function" value="ON" />
+        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+        <ctl name="SLIM_0_RX Channels" value="Two" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
+        <ctl name="HPHL DAC Switch" value="1" />
+        <ctl name="HPHR DAC Switch" value="1" />
+        <ctl name="COMP1 Switch" value="0" />
+        <ctl name="HPHL Volume" value="20" />
+        <ctl name="HPHR Volume" value="20" />
+        <ctl name="RX1 Digital Volume" value="77" />
+        <ctl name="RX2 Digital Volume" value="77" />
+        <ctl name="ADC3 Volume" value="10" />
+        <ctl name="ADC2 Volume" value="10" />
+        <ctl name="ANC1 FB MUX" value="EAR_HPH_L" />
     </path>
 
-    <path name="anc-nc-headphone-regulation">
+    <path name="anc2-off">
+        <path name="anc-off" />
     </path>
 
-    <path name="anc-nc-headphone-hi-res-regulation">
+    <path name="anc2-on">
+        <ctl name="ANC Function" value="ON" />
+        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+        <ctl name="SLIM_0_RX Channels" value="Two" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
+        <ctl name="HPHL DAC Switch" value="1" />
+        <ctl name="HPHR DAC Switch" value="1" />
+        <ctl name="COMP1 Switch" value="0" />
+        <ctl name="HPHL Volume" value="20" />
+        <ctl name="HPHR Volume" value="20" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
+        <ctl name="ADC3 Volume" value="10" />
+        <ctl name="ADC2 Volume" value="10" />
+        <ctl name="ANC1 FB MUX" value="EAR_HPH_L" />
     </path>
 
-    <path name="anc-nce-headphone-regulation">
+    <path name="anc2-on-regulation">
+        <ctl name="ANC Function" value="ON" />
+        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+        <ctl name="SLIM_0_RX Channels" value="Two" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
+        <ctl name="HPHL DAC Switch" value="1" />
+        <ctl name="HPHR DAC Switch" value="1" />
+        <ctl name="COMP1 Switch" value="0" />
+        <ctl name="HPHL Volume" value="20" />
+        <ctl name="HPHR Volume" value="20" />
+        <ctl name="RX1 Digital Volume" value="77" />
+        <ctl name="RX2 Digital Volume" value="77" />
+        <ctl name="ADC3 Volume" value="10" />
+        <ctl name="ADC2 Volume" value="10" />
+        <ctl name="ANC1 FB MUX" value="EAR_HPH_L" />
     </path>
 
-    <path name="anc-nce-headphone-hi-res-regulation">
-    </path>
+    <!-- ========  for deivce  ======== -->
 
     <path name="anc-off-headphone">
-        <ctl name="SLIM_0_RX Format" value="S16_LE" />
-        <ctl name="SLIM_0_RX SampleRate" value="KHZ_48" />
         <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
         <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
         <ctl name="SLIM_0_RX Channels" value="Two" />
@@ -3277,9 +3368,7 @@
         <ctl name="RX2 Digital Volume" value="84" />
     </path>
 
-    <path name="anc-off-headphone-hi-res">
-        <ctl name="SLIM_0_RX Format" value="S24_LE" />
-        <ctl name="SLIM_0_RX SampleRate" value="KHZ_96" />
+    <path name="anc-off-headphone-regulation">
         <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
         <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
         <ctl name="SLIM_0_RX Channels" value="Two" />
@@ -3295,17 +3384,122 @@
         <ctl name="RX2 Digital Volume" value="77" />
     </path>
 
-    <path name="anc-nc-off-headphone-hi-res">
-        <path name="anc-off-headphone-hi-res" />
+    <!-- ================================================= -->
+    <!--  common sequence for non call devices for hi-res  -->
+    <!-- ================================================= -->
+
+    <path name="anc-off-hi-res">
+        <ctl name="ANC1 MUX" value="ZERO" />
+        <ctl name="ANC2 MUX" value="ZERO" />
+        <ctl name="ADC3 Volume" value="0" />
+        <ctl name="ADC2 Volume" value="0" />
+        <ctl name="ANC1 FB MUX" value="ZERO" />
+        <ctl name="ANC Function" value="OFF" />
     </path>
 
-     <path name="anc-nce-off-headphone-hi-res">
-        <path name="anc-off-headphone-hi-res" />
-     </path>
+    <path name="anc-on-hi-res">
+        <ctl name="ANC Function" value="ON" />
+        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+        <ctl name="SLIM_0_RX Channels" value="Two" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
+        <ctl name="HPHL DAC Switch" value="1" />
+        <ctl name="HPHR DAC Switch" value="1" />
+        <ctl name="COMP1 Switch" value="0" />
+        <ctl name="HPHL Volume" value="20" />
+        <ctl name="HPHR Volume" value="20" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
+        <ctl name="ADC3 Volume" value="10" />
+        <ctl name="ADC2 Volume" value="10" />
+        <ctl name="ANC1 FB MUX" value="EAR_HPH_L" />
+    </path>
+
+    <path name="anc-on-hi-res-regulation">
+        <ctl name="ANC Function" value="ON" />
+        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+        <ctl name="SLIM_0_RX Channels" value="Two" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
+        <ctl name="HPHL DAC Switch" value="1" />
+        <ctl name="HPHR DAC Switch" value="1" />
+        <ctl name="COMP1 Switch" value="0" />
+        <ctl name="HPHL Volume" value="20" />
+        <ctl name="HPHR Volume" value="20" />
+        <ctl name="RX1 Digital Volume" value="77" />
+        <ctl name="RX2 Digital Volume" value="77" />
+        <ctl name="ADC3 Volume" value="10" />
+        <ctl name="ADC2 Volume" value="10" />
+        <ctl name="ANC1 FB MUX" value="EAR_HPH_L" />
+    </path>
+
+    <path name="anc2-off-hi-res">
+        <path name="anc-off-hi-res" />
+    </path>
+
+    <path name="anc2-on-hi-res">
+        <ctl name="ANC Function" value="ON" />
+        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+        <ctl name="SLIM_0_RX Channels" value="Two" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
+        <ctl name="HPHL DAC Switch" value="1" />
+        <ctl name="HPHR DAC Switch" value="1" />
+        <ctl name="COMP1 Switch" value="0" />
+        <ctl name="HPHL Volume" value="20" />
+        <ctl name="HPHR Volume" value="20" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
+        <ctl name="ADC3 Volume" value="10" />
+        <ctl name="ADC2 Volume" value="10" />
+        <ctl name="ANC1 FB MUX" value="EAR_HPH_L" />
+    </path>
+
+    <path name="anc2-on-hi-res-regulation">
+        <ctl name="ANC Function" value="ON" />
+        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+        <ctl name="SLIM_0_RX Channels" value="Two" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
+        <ctl name="HPHL DAC Switch" value="1" />
+        <ctl name="HPHR DAC Switch" value="1" />
+        <ctl name="COMP1 Switch" value="0" />
+        <ctl name="HPHL Volume" value="20" />
+        <ctl name="HPHR Volume" value="20" />
+        <ctl name="RX1 Digital Volume" value="77" />
+        <ctl name="RX2 Digital Volume" value="77" />
+        <ctl name="ADC3 Volume" value="10" />
+        <ctl name="ADC2 Volume" value="10" />
+        <ctl name="ANC1 FB MUX" value="EAR_HPH_L" />
+    </path>
+
+    <!-- ========  for deivce  ======== -->
+
+    <path name="anc-off-headphone-hi-res">
+        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+        <ctl name="SLIM_0_RX Channels" value="Two" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
+        <ctl name="HPHL DAC Switch" value="1" />
+        <ctl name="HPHR DAC Switch" value="1" />
+        <ctl name="COMP1 Switch" value="0" />
+        <ctl name="HPHL Volume" value="20" />
+        <ctl name="HPHR Volume" value="20" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
+    </path>
 
     <path name="anc-off-headphone-hi-res-regulation">
-        <ctl name="SLIM_0_RX Format" value="S24_LE" />
-        <ctl name="SLIM_0_RX SampleRate" value="KHZ_96" />
         <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
         <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
         <ctl name="SLIM_0_RX Channels" value="Two" />
@@ -3321,187 +3515,9 @@
         <ctl name="RX2 Digital Volume" value="77" />
     </path>
 
-    <path name="anc-nc-off-headphone-hi-res-regulation">
-        <path name="anc-off-headphone-hi-res-regulation" />
-    </path>
-
-    <path name="anc-nce-off-headphone-hi-res-regulation">
-        <path name="anc-off-headphone-hi-res-regulation" />
-    </path>
-
-    <path name="anc-off-headphone-regulation">
-        <ctl name="SLIM_0_RX Format" value="S16_LE" />
-        <ctl name="SLIM_0_RX SampleRate" value="KHZ_48" />
-        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
-        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
-        <ctl name="SLIM_0_RX Channels" value="Two" />
-        <ctl name="RX1 MIX1 INP1" value="RX1" />
-        <ctl name="RX2 MIX1 INP1" value="RX2" />
-        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
-        <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="HPHR DAC Switch" value="1" />
-        <ctl name="COMP1 Switch" value="0" />
-        <ctl name="HPHL Volume" value="20" />
-        <ctl name="HPHR Volume" value="20" />
-        <ctl name="RX1 Digital Volume" value="77" />
-        <ctl name="RX2 Digital Volume" value="77" />
-    </path>
-
-    <path name="anc-nc-off-headphone">
-        <path name="anc-off-headphone" />
-    </path>
-
-    <path name="anc-nce-off-headphone">
-        <path name="anc-off-headphone" />
-    </path>
-
-    <path name="anc-nc-off-headphone-regulation">
-        <path name="anc-off-headphone-regulation" />
-    </path>
-
-    <path name="anc-nce-off-headphone-regulation">
-        <path name="anc-off-headphone-regulation" />
-    </path>
-
-    <path name="speaker-anc-nc-headphone">
-        <path name="speaker" />
-        <path name="anc-nc-headphone" />
-        <ctl name="RX1 Digital Volume" value="65" />
-        <ctl name="RX2 Digital Volume" value="65" />
-    </path>
-
-    <path name="speaker-anc-nce-headphone">
-        <path name="speaker" />
-        <path name="anc-nce-headphone" />
-        <ctl name="RX1 Digital Volume" value="71" />
-        <ctl name="RX2 Digital Volume" value="71" />
-    </path>
-
-    <path name="speaker-anc-nc-off-headphone">
-        <path name="speaker" />
-        <path name="anc-nc-off-headphone" />
-        <ctl name="RX1 Digital Volume" value="65" />
-        <ctl name="RX2 Digital Volume" value="65" />
-    </path>
-
-    <path name="speaker-anc-nce-off-headphone">
-        <path name="speaker" />
-        <path name="anc-nce-off-headphone" />
-        <ctl name="RX1 Digital Volume" value="71" />
-        <ctl name="RX2 Digital Volume" value="71" />
-    </path>
-
-    <path name="speaker-ring-anc-nc-headphone">
-        <path name="ringtone-speaker" />
-        <path name="anc-nc-headphone" />
-        <ctl name="RX1 Digital Volume" value="65" />
-        <ctl name="RX2 Digital Volume" value="65" />
-    </path>
-
-    <path name="speaker-mono-ring-anc-nc-headphone">
-        <path name="ringtone-speaker-mono" />
-        <path name="anc-nc-headphone" />
-        <ctl name="RX1 Digital Volume" value="65" />
-        <ctl name="RX2 Digital Volume" value="65" />
-    </path>
-
-    <path name="speaker-ring-anc-nce-headphone">
-        <path name="ringtone-speaker" />
-        <path name="anc-nce-headphone" />
-        <ctl name="RX1 Digital Volume" value="71" />
-        <ctl name="RX2 Digital Volume" value="71" />
-    </path>
-
-    <path name="speaker-mono-ring-anc-nce-headphone">
-        <path name="ringtone-speaker-mono" />
-        <path name="anc-nce-headphone" />
-        <ctl name="RX1 Digital Volume" value="71" />
-        <ctl name="RX2 Digital Volume" value="71" />
-    </path>
-
-    <path name="speaker-ring-anc-nc-off-headphone">
-        <path name="ringtone-speaker" />
-        <path name="anc-nc-off-headphone" />
-        <ctl name="RX1 Digital Volume" value="65" />
-        <ctl name="RX2 Digital Volume" value="65" />
-    </path>
-
-    <path name="speaker-mono-ring-anc-nc-off-headphone">
-        <path name="ringtone-speaker-mono" />
-        <path name="anc-nc-off-headphone" />
-        <ctl name="RX1 Digital Volume" value="65" />
-        <ctl name="RX2 Digital Volume" value="65" />
-    </path>
-
-    <path name="speaker-ring-anc-nce-off-headphone">
-        <path name="ringtone-speaker" />
-        <path name="anc-nce-off-headphone" />
-        <ctl name="RX1 Digital Volume" value="71" />
-        <ctl name="RX2 Digital Volume" value="71" />
-    </path>
-
-    <path name="speaker-mono-ring-anc-nce-off-headphone">
-        <path name="ringtone-speaker-mono" />
-        <path name="anc-nce-off-headphone" />
-        <ctl name="RX1 Digital Volume" value="71" />
-        <ctl name="RX2 Digital Volume" value="71" />
-    </path>
-
-    <path name="speaker-anc-nc-headphone-hi-res">
-        <path name="speaker" />
-        <path name="anc-nc-headphone" />
-        <ctl name="RX1 Digital Volume" value="65" />
-        <ctl name="RX2 Digital Volume" value="65" />
-    </path>
-
-    <path name="speaker-anc-nce-headphone-hi-res">
-        <path name="speaker" />
-        <path name="anc-nce-headphone" />
-        <ctl name="RX1 Digital Volume" value="65" />
-        <ctl name="RX2 Digital Volume" value="65" />
-    </path>
-
-    <path name="speaker-anc-nc-off-headphone-hi-res">
-        <path name="speaker" />
-        <path name="anc-nc-off-headphone" />
-        <ctl name="RX1 Digital Volume" value="65" />
-        <ctl name="RX2 Digital Volume" value="65" />
-    </path>
-
-    <path name="speaker-anc-nce-off-headphone-hi-res">
-        <path name="speaker" />
-        <path name="anc-nce-off-headphone" />
-        <ctl name="RX1 Digital Volume" value="65" />
-        <ctl name="RX2 Digital Volume" value="65" />
-    </path>
-
-    <path name="speaker-ring-anc-nc-headphone-hi-res">
-        <path name="ringtone-speaker" />
-        <path name="anc-nc-headphone" />
-        <ctl name="RX1 Digital Volume" value="65" />
-        <ctl name="RX2 Digital Volume" value="65" />
-    </path>
-
-    <path name="speaker-ring-anc-nce-headphone-hi-res">
-        <path name="ringtone-speaker" />
-        <path name="anc-nce-headphone" />
-        <ctl name="RX1 Digital Volume" value="65" />
-        <ctl name="RX2 Digital Volume" value="65" />
-    </path>
-
-    <path name="speaker-ring-anc-nc-off-headphone-hi-res">
-        <path name="ringtone-speaker" />
-        <path name="anc-nc-off-headphone" />
-        <ctl name="RX1 Digital Volume" value="65" />
-        <ctl name="RX2 Digital Volume" value="65" />
-    </path>
-
-    <path name="speaker-ring-anc-nce-off-headphone-hi-res">
-        <path name="ringtone-speaker" />
-        <path name="anc-nce-off-headphone" />
-        <ctl name="RX1 Digital Volume" value="65" />
-        <ctl name="RX2 Digital Volume" value="65" />
-    </path>
+    <!-- ============================================= -->
+    <!--    common sequence for call devices           -->
+    <!-- ============================================= -->
 
     <path name="voiceanc-headphone">
         <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
@@ -3600,6 +3616,7 @@
     </path>
 
     <path name="voiceanc-headset">
+        <ctl name="AUDIO_REF_EC_UL1 MUX" value="None" />
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
         <ctl name="SLIM_0_TX Channels" value="One" />
         <ctl name="IIR2 Enable Band1" value="1" />
@@ -3623,6 +3640,90 @@
         <ctl name="DEC4 Volume" value="84" />
         <ctl name="ADC2 Volume" value="10" />
         <ctl name="ADC3 Volume" value="10" />
+    </path>
+
+    <path name="voiceanc2-headset">
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="IIR2 Enable Band1" value="1" />
+        <ctl name="IIR2 Enable Band2" value="1" />
+        <ctl name="IIR2 Enable Band3" value="1" />
+        <ctl name="IIR2 Enable Band4" value="1" />
+        <ctl name="IIR2 Enable Band5" value="1" />
+        <!-- 45 % of 124 (range 0 - 124) Register: 0x350 -->
+        <ctl name="IIR2 INP1 Volume" value="84" />
+        <!-- 45 % of 124 (range 0 - 124) Register: 0x351 -->
+        <ctl name="IIR2 INP2 Volume" value="84" />
+        <ctl name="RX3 MIX1 INP1" value="IIR2" />
+        <ctl name="SLIM TX7 MUX" value="RMIX3" />
+        <ctl name="DEC5 MUX" value="ADC2" />
+        <ctl name="DEC4 MUX" value="ADC3" />
+        <ctl name="IIR1 INP1 MUX" value="DEC5" />
+        <ctl name="IIR1 INP2 MUX" value="DEC4" />
+        <ctl name="IIR2 INP1 MUX" value="DEC5" />
+        <ctl name="IIR2 INP2 MUX" value="DEC4" />
+        <ctl name="DEC5 Volume" value="84" />
+        <ctl name="DEC4 Volume" value="84" />
+        <ctl name="ADC2 Volume" value="10" />
+        <ctl name="ADC3 Volume" value="10" />
+    </path>
+
+    <!-- ========  NC  ======== -->
+
+    <path name="anc-nc-headphone">
+    </path>
+
+    <path name="anc-nc-headphone-regulation">
+    </path>
+
+    <path name="anc-nc-off-headphone">
+        <path name="anc-off-headphone" />
+    </path>
+
+    <path name="anc-nc-off-headphone-regulation">
+        <path name="anc-off-headphone-regulation" />
+    </path>
+
+    <path name="speaker-anc-nc-headphone">
+        <path name="speaker" />
+        <path name="anc-nc-headphone" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
+    </path>
+
+    <path name="speaker-anc-nc-off-headphone">
+        <path name="speaker" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
+    </path>
+
+    <path name="speaker-mono-ring-anc-nc-headphone">
+        <path name="ringtone-speaker-mono" />
+        <path name="anc-nc-headphone" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
+    </path>
+
+    <path name="speaker-mono-ring-anc-nc-off-headphone">
+        <path name="ringtone-speaker-mono" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
+    </path>
+
+    <path name="speaker-ring-anc-nc-headphone">
+        <path name="ringtone-speaker" />
+        <path name="anc-nc-headphone" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
+    </path>
+
+    <path name="speaker-ring-anc-nc-off-headphone">
+        <path name="ringtone-speaker" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
     </path>
 
     <path name="voiceanc-nc-headphone">
@@ -3661,6 +3762,64 @@
         <ctl name="RX2 Digital Volume" value="84" />
     </path>
 
+    <!-- ========  NCE  ======== -->
+
+    <path name="anc-nce-headphone">
+    </path>
+
+    <path name="anc-nce-headphone-regulation">
+    </path>
+
+    <path name="anc-nce-off-headphone">
+        <path name="anc-off-headphone" />
+    </path>
+
+    <path name="anc-nce-off-headphone-regulation">
+        <path name="anc-off-headphone-regulation" />
+    </path>
+
+    <path name="speaker-anc-nce-headphone">
+        <path name="speaker" />
+        <path name="anc-nce-headphone" />
+        <ctl name="RX1 Digital Volume" value="71" />
+        <ctl name="RX2 Digital Volume" value="71" />
+    </path>
+
+    <path name="speaker-anc-nce-off-headphone">
+        <path name="speaker" />
+        <path name="anc-nce-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="71" />
+        <ctl name="RX2 Digital Volume" value="71" />
+    </path>
+
+    <path name="speaker-mono-ring-anc-nce-headphone">
+        <path name="ringtone-speaker-mono" />
+        <path name="anc-nce-headphone" />
+        <ctl name="RX1 Digital Volume" value="71" />
+        <ctl name="RX2 Digital Volume" value="71" />
+    </path>
+
+    <path name="speaker-mono-ring-anc-nce-off-headphone">
+        <path name="ringtone-speaker-mono" />
+        <path name="anc-nce-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="71" />
+        <ctl name="RX2 Digital Volume" value="71" />
+    </path>
+
+    <path name="speaker-ring-anc-nce-headphone">
+        <path name="ringtone-speaker" />
+        <path name="anc-nce-headphone" />
+        <ctl name="RX1 Digital Volume" value="71" />
+        <ctl name="RX2 Digital Volume" value="71" />
+    </path>
+
+    <path name="speaker-ring-anc-nce-off-headphone">
+        <path name="ringtone-speaker" />
+        <path name="anc-nce-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="71" />
+        <ctl name="RX2 Digital Volume" value="71" />
+    </path>
+
     <path name="voiceanc-nce-headphone">
         <path name="voiceanc-headphone" />
     </path>
@@ -3685,115 +3844,361 @@
         <path name="voiceanc-headphone-eq2-wv" />
     </path>
 
-    <path name="anc-on">
-        <ctl name="ANC Function" value="ON" />
-        <ctl name="SLIM_0_RX Format" value="S16_LE" />
-        <ctl name="SLIM_0_RX SampleRate" value="KHZ_48" />
-        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
-        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
-        <ctl name="SLIM_0_RX Channels" value="Two" />
-        <ctl name="RX1 MIX1 INP1" value="RX1" />
-        <ctl name="RX2 MIX1 INP1" value="RX2" />
-        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
-        <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="HPHR DAC Switch" value="1" />
-        <ctl name="COMP1 Switch" value="0" />
-        <ctl name="HPHL Volume" value="20" />
-        <ctl name="HPHR Volume" value="20" />
-        <ctl name="RX1 Digital Volume" value="84" />
-        <ctl name="RX2 Digital Volume" value="84" />
-        <ctl name="ADC3 Volume" value="10" />
-        <ctl name="ADC2 Volume" value="10" />
-        <ctl name="ANC1 FB MUX" value="EAR_HPH_L" />
+    <!-- ========  ANC2 NC  ======== -->
+
+    <path name="anc2-nc-headphone">
     </path>
 
-    <path name="anc-on-hi-res">
-        <ctl name="ANC Function" value="ON" />
-        <ctl name="SLIM_0_RX Format" value="S24_LE" />
-        <ctl name="SLIM_0_RX SampleRate" value="KHZ_96" />
-        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
-        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
-        <ctl name="SLIM_0_RX Channels" value="Two" />
-        <ctl name="RX1 MIX1 INP1" value="RX1" />
-        <ctl name="RX2 MIX1 INP1" value="RX2" />
-        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
-        <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="HPHR DAC Switch" value="1" />
-        <ctl name="COMP1 Switch" value="0" />
-        <ctl name="HPHL Volume" value="20" />
-        <ctl name="HPHR Volume" value="20" />
-        <ctl name="RX1 Digital Volume" value="84" />
-        <ctl name="RX2 Digital Volume" value="84" />
-        <ctl name="ADC3 Volume" value="10" />
-        <ctl name="ADC2 Volume" value="10" />
-        <ctl name="ANC1 FB MUX" value="EAR_HPH_L" />
+    <path name="anc2-nc-headphone-regulation">
     </path>
 
-    <path name="anc-on-regulation">
-        <ctl name="ANC Function" value="ON" />
-        <ctl name="SLIM_0_RX Format" value="S16_LE" />
-        <ctl name="SLIM_0_RX SampleRate" value="KHZ_48" />
-        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
-        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
-        <ctl name="SLIM_0_RX Channels" value="Two" />
-        <ctl name="RX1 MIX1 INP1" value="RX1" />
-        <ctl name="RX2 MIX1 INP1" value="RX2" />
-        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
-        <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="HPHR DAC Switch" value="1" />
-        <ctl name="COMP1 Switch" value="0" />
-        <ctl name="HPHL Volume" value="20" />
-        <ctl name="HPHR Volume" value="20" />
-        <ctl name="RX1 Digital Volume" value="77" />
-        <ctl name="RX2 Digital Volume" value="77" />
-        <ctl name="ADC3 Volume" value="10" />
-        <ctl name="ADC2 Volume" value="10" />
-        <ctl name="ANC1 FB MUX" value="EAR_HPH_L" />
+    <path name="anc2-nc-off-headphone">
+        <path name="anc-off-headphone" />
     </path>
 
-    <path name="anc-on-hi-res-regulation">
-        <ctl name="ANC Function" value="ON" />
-        <ctl name="SLIM_0_RX Format" value="S24_LE" />
-        <ctl name="SLIM_0_RX SampleRate" value="KHZ_96" />
-        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
-        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
-        <ctl name="SLIM_0_RX Channels" value="Two" />
-        <ctl name="RX1 MIX1 INP1" value="RX1" />
-        <ctl name="RX2 MIX1 INP1" value="RX2" />
-        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
-        <ctl name="HPHL DAC Switch" value="1" />
-        <ctl name="HPHR DAC Switch" value="1" />
-        <ctl name="COMP1 Switch" value="0" />
-        <ctl name="HPHL Volume" value="20" />
-        <ctl name="HPHR Volume" value="20" />
-        <ctl name="RX1 Digital Volume" value="77" />
-        <ctl name="RX2 Digital Volume" value="77" />
-        <ctl name="ADC3 Volume" value="10" />
-        <ctl name="ADC2 Volume" value="10" />
-        <ctl name="ANC1 FB MUX" value="EAR_HPH_L" />
+    <path name="anc2-nc-off-headphone-regulation">
+        <path name="anc-off-headphone-regulation" />
     </path>
 
-    <path name="anc-off">
-        <ctl name="SLIM_0_RX Format" value="S16_LE" />
-        <ctl name="SLIM_0_RX SampleRate" value="KHZ_48" />
-        <ctl name="ANC1 MUX" value="ZERO" />
-        <ctl name="ANC2 MUX" value="ZERO" />
-        <ctl name="ADC3 Volume" value="0" />
-        <ctl name="ADC2 Volume" value="0" />
-        <ctl name="ANC1 FB MUX" value="ZERO" />
-        <ctl name="ANC Function" value="OFF" />
+    <path name="speaker-anc2-nc-headphone">
+        <path name="speaker" />
+        <path name="anc2-nc-headphone" />
+        <ctl name="RX1 Digital Volume" value="50" />
+        <ctl name="RX2 Digital Volume" value="50" />
     </path>
 
-    <path name="anc-off-hi-res">
-        <ctl name="SLIM_0_RX Format" value="S24_LE" />
-        <ctl name="SLIM_0_RX SampleRate" value="KHZ_96" />
-        <ctl name="ANC1 MUX" value="ZERO" />
-        <ctl name="ANC2 MUX" value="ZERO" />
-        <ctl name="ADC3 Volume" value="0" />
-        <ctl name="ADC2 Volume" value="0" />
-        <ctl name="ANC1 FB MUX" value="ZERO" />
-        <ctl name="ANC Function" value="OFF" />
+    <path name="speaker-anc2-nc-off-headphone">
+        <path name="speaker" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="50" />
+        <ctl name="RX2 Digital Volume" value="50" />
     </path>
+
+    <path name="speaker-mono-ring-anc2-nc-headphone">
+        <path name="ringtone-speaker-mono" />
+        <path name="anc2-nc-headphone" />
+        <ctl name="RX1 Digital Volume" value="50" />
+        <ctl name="RX2 Digital Volume" value="50" />
+    </path>
+
+    <path name="speaker-mono-ring-anc2-nc-off-headphone">
+        <path name="ringtone-speaker-mono" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="50" />
+        <ctl name="RX2 Digital Volume" value="50" />
+    </path>
+
+    <path name="speaker-ring-anc2-nc-headphone">
+        <path name="ringtone-speaker" />
+        <path name="anc2-nc-headphone" />
+        <ctl name="RX1 Digital Volume" value="50" />
+        <ctl name="RX2 Digital Volume" value="50" />
+    </path>
+
+    <path name="speaker-ring-anc2-nc-off-headphone">
+        <path name="ringtone-speaker" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="50" />
+        <ctl name="RX2 Digital Volume" value="50" />
+    </path>
+
+    <path name="voiceanc2-nc-headphone">
+        <path name="voiceanc-headphone" />
+        <ctl name="RX1 Digital Volume" value="78" />
+        <ctl name="RX2 Digital Volume" value="78" />
+    </path>
+
+    <path name="voiceanc2-nc-headphone-eq1">
+        <path name="voiceanc-headphone-eq1" />
+        <ctl name="RX1 Digital Volume" value="78" />
+        <ctl name="RX2 Digital Volume" value="78" />
+    </path>
+
+    <path name="voiceanc2-nc-headphone-eq2">
+        <path name="voiceanc-headphone-eq2" />
+        <ctl name="RX1 Digital Volume" value="78" />
+        <ctl name="RX2 Digital Volume" value="78" />
+    </path>
+
+    <path name="voiceanc2-nc-headphone-wv">
+        <path name="voiceanc-headphone-wv" />
+        <ctl name="RX1 Digital Volume" value="78" />
+        <ctl name="RX2 Digital Volume" value="78" />
+    </path>
+
+    <path name="voiceanc2-nc-headphone-eq1-wv">
+        <path name="voiceanc-headphone-eq1-wv" />
+        <ctl name="RX1 Digital Volume" value="78" />
+        <ctl name="RX2 Digital Volume" value="78" />
+    </path>
+
+    <path name="voiceanc2-nc-headphone-eq2-wv">
+        <path name="voiceanc-headphone-eq2-wv" />
+        <ctl name="RX1 Digital Volume" value="78" />
+        <ctl name="RX2 Digital Volume" value="78" />
+    </path>
+
+    <!-- ========  ANC2 NCE  ======== -->
+
+    <path name="anc2-nce-headphone">
+    </path>
+
+    <path name="anc2-nce-headphone-regulation">
+    </path>
+
+    <path name="anc2-nce-off-headphone">
+        <path name="anc-off-headphone" />
+    </path>
+
+    <path name="anc2-nce-off-headphone-regulation">
+        <path name="anc-off-headphone-regulation" />
+    </path>
+
+    <path name="speaker-anc2-nce-headphone">
+        <path name="speaker" />
+        <path name="anc2-nce-headphone" />
+        <ctl name="RX1 Digital Volume" value="56" />
+        <ctl name="RX2 Digital Volume" value="56" />
+    </path>
+
+    <path name="speaker-anc2-nce-off-headphone">
+        <path name="speaker" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="56" />
+        <ctl name="RX2 Digital Volume" value="56" />
+    </path>
+
+    <path name="speaker-mono-ring-anc2-nce-headphone">
+        <path name="ringtone-speaker-mono" />
+        <path name="anc2-nce-headphone" />
+        <ctl name="RX1 Digital Volume" value="56" />
+        <ctl name="RX2 Digital Volume" value="56" />
+    </path>
+
+    <path name="speaker-mono-ring-anc2-nce-off-headphone">
+        <path name="ringtone-speaker-mono" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="56" />
+        <ctl name="RX2 Digital Volume" value="56" />
+    </path>
+
+    <path name="speaker-ring-anc2-nce-headphone">
+        <path name="ringtone-speaker" />
+        <path name="anc2-nce-headphone" />
+        <ctl name="RX1 Digital Volume" value="56" />
+        <ctl name="RX2 Digital Volume" value="56" />
+    </path>
+
+    <path name="speaker-ring-anc2-nce-off-headphone">
+        <path name="ringtone-speaker" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="56" />
+        <ctl name="RX2 Digital Volume" value="56" />
+    </path>
+
+    <path name="voiceanc2-nce-headphone">
+        <path name="voiceanc-headphone" />
+    </path>
+
+    <path name="voiceanc2-nce-headphone-eq1">
+        <path name="voiceanc-headphone-eq1" />
+    </path>
+
+    <path name="voiceanc2-nce-headphone-eq2">
+        <path name="voiceanc-headphone-eq2" />
+    </path>
+
+    <path name="voiceanc2-nce-headphone-wv">
+        <path name="voiceanc-headphone-wv" />
+    </path>
+
+    <path name="voiceanc2-nce-headphone-eq1-wv">
+        <path name="voiceanc-headphone-eq1-wv" />
+    </path>
+
+    <path name="voiceanc2-nce-headphone-eq2-wv">
+        <path name="voiceanc-headphone-eq2-wv" />
+    </path>
+
+    <!-- ========  NC for hi-res  ======== -->
+
+    <path name="anc-nc-headphone-hi-res">
+    </path>
+
+    <path name="anc-nc-headphone-hi-res-regulation">
+    </path>
+
+    <path name="anc-nc-off-headphone-hi-res">
+        <path name="anc-off-headphone-hi-res" />
+    </path>
+
+    <path name="anc-nc-off-headphone-hi-res-regulation">
+        <path name="anc-off-headphone-hi-res-regulation" />
+    </path>
+
+    <path name="speaker-anc-nc-headphone-hi-res">
+        <path name="speaker" />
+        <path name="anc-nc-headphone" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
+    </path>
+
+    <path name="speaker-anc-nc-off-headphone-hi-res">
+        <path name="speaker" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
+    </path>
+
+    <path name="speaker-ring-anc-nc-headphone-hi-res">
+        <path name="ringtone-speaker" />
+        <path name="anc-nc-headphone" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
+    </path>
+
+    <path name="speaker-ring-anc-nc-off-headphone-hi-res">
+        <path name="ringtone-speaker" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
+    </path>
+
+    <!-- ========  NCE for hi-res  ======== -->
+
+    <path name="anc-nce-headphone-hi-res">
+    </path>
+
+    <path name="anc-nce-headphone-hi-res-regulation">
+    </path>
+
+    <path name="anc-nce-off-headphone-hi-res">
+        <path name="anc-off-headphone-hi-res" />
+    </path>
+
+    <path name="anc-nce-off-headphone-hi-res-regulation">
+        <path name="anc-off-headphone-hi-res-regulation" />
+    </path>
+
+    <path name="speaker-anc-nce-headphone-hi-res">
+        <path name="speaker" />
+        <path name="anc-nce-headphone" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
+    </path>
+
+    <path name="speaker-anc-nce-off-headphone-hi-res">
+        <path name="speaker" />
+        <path name="anc-nce-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
+    </path>
+
+    <path name="speaker-ring-anc-nce-headphone-hi-res">
+        <path name="ringtone-speaker" />
+        <path name="anc-nce-headphone" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
+    </path>
+
+    <path name="speaker-ring-anc-nce-off-headphone-hi-res">
+        <path name="ringtone-speaker" />
+        <path name="anc-nce-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
+    </path>
+
+    <!-- ========  ANC2 NC for hi-res  ======== -->
+
+    <path name="anc2-nc-headphone-hi-res">
+    </path>
+
+    <path name="anc2-nc-headphone-hi-res-regulation">
+    </path>
+
+    <path name="anc2-nc-off-headphone-hi-res">
+        <path name="anc-off-headphone-hi-res" />
+    </path>
+
+    <path name="anc2-nc-off-headphone-hi-res-regulation">
+        <path name="anc-off-headphone-hi-res-regulation" />
+    </path>
+
+    <path name="speaker-anc2-nc-headphone-hi-res">
+        <path name="speaker" />
+        <path name="anc2-nc-headphone" />
+        <ctl name="RX1 Digital Volume" value="50" />
+        <ctl name="RX2 Digital Volume" value="50" />
+    </path>
+
+    <path name="speaker-anc2-nc-off-headphone-hi-res">
+        <path name="speaker" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="50" />
+        <ctl name="RX2 Digital Volume" value="50" />
+    </path>
+
+    <path name="speaker-ring-anc2-nc-headphone-hi-res">
+        <path name="ringtone-speaker" />
+        <path name="anc2-nc-headphone" />
+        <ctl name="RX1 Digital Volume" value="50" />
+        <ctl name="RX2 Digital Volume" value="50" />
+    </path>
+
+    <path name="speaker-ring-anc2-nc-off-headphone-hi-res">
+        <path name="ringtone-speaker" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="50" />
+        <ctl name="RX2 Digital Volume" value="50" />
+    </path>
+
+    <!-- ========  ANC2 NCE for hi-res  ======== -->
+
+    <path name="anc2-nce-headphone-hi-res">
+    </path>
+
+    <path name="anc2-nce-headphone-hi-res-regulation">
+    </path>
+
+    <path name="anc2-nce-off-headphone-hi-res">
+        <path name="anc-off-headphone-hi-res" />
+    </path>
+
+    <path name="anc2-nce-off-headphone-hi-res-regulation">
+        <path name="anc-off-headphone-hi-res-regulation" />
+    </path>
+
+    <path name="speaker-anc2-nce-headphone-hi-res">
+        <path name="speaker" />
+        <path name="anc2-nce-headphone" />
+        <ctl name="RX1 Digital Volume" value="56" />
+        <ctl name="RX2 Digital Volume" value="56" />
+    </path>
+
+    <path name="speaker-anc2-nce-off-headphone-hi-res">
+        <path name="speaker" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="56" />
+        <ctl name="RX2 Digital Volume" value="56" />
+    </path>
+
+    <path name="speaker-ring-anc2-nce-headphone-hi-res">
+        <path name="ringtone-speaker" />
+        <path name="anc2-nce-headphone" />
+        <ctl name="RX1 Digital Volume" value="56" />
+        <ctl name="RX2 Digital Volume" value="56" />
+    </path>
+
+    <path name="speaker-ring-anc2-nce-off-headphone-hi-res">
+        <path name="ringtone-speaker" />
+        <path name="anc-nc-off-headphone" />
+        <ctl name="RX1 Digital Volume" value="56" />
+        <ctl name="RX2 Digital Volume" value="56" />
+    </path>
+
+    <!-- ============================================= -->
+    <!--            env type devices                   -->
+    <!-- ============================================= -->
 
     <path name="anc-mux-on">
         <ctl name="ANC1 MUX" value="ADC3" />
@@ -3804,6 +4209,8 @@
         <ctl name="ANC1 MUX" value="ZERO" />
         <ctl name="ANC2 MUX" value="ZERO" />
     </path>
+
+    <!-- ========  NC  ======== -->
 
     <path name="anc-type-0-bus-train-mode">
         <ctl name="ANC Slot" value="3" />
@@ -3820,6 +4227,8 @@
         <path name="anc-mux-on" />
     </path>
 
+    <!-- ========  NCE  ======== -->
+
     <path name="anc-type-1-bus-train-mode">
         <ctl name="ANC Slot" value="0" />
         <path name="anc-mux-on" />
@@ -3834,6 +4243,42 @@
         <ctl name="ANC Slot" value="2" />
         <path name="anc-mux-on" />
     </path>
+
+    <!-- ========  ANC2 NC  ======== -->
+
+    <path name="anc2-type-2-bus-train-mode">
+        <ctl name="ANC Slot" value="17" />
+        <path name="anc-mux-on" />
+    </path>
+
+    <path name="anc2-type-2-airplane-mode">
+        <ctl name="ANC Slot" value="18" />
+        <path name="anc-mux-on" />
+    </path>
+
+    <path name="anc2-type-2-office-mode">
+        <ctl name="ANC Slot" value="19" />
+        <path name="anc-mux-on" />
+    </path>
+
+    <!-- ========  ANC2 NCE  ======== -->
+
+    <path name="anc2-type-3-bus-train-mode">
+        <ctl name="ANC Slot" value="14" />
+        <path name="anc-mux-on" />
+    </path>
+
+    <path name="anc2-type-3-airplane-mode">
+        <ctl name="ANC Slot" value="15" />
+        <path name="anc-mux-on" />
+    </path>
+
+    <path name="anc2-type-3-office-mode">
+        <ctl name="ANC Slot" value="16" />
+        <path name="anc-mux-on" />
+    </path>
+
+    <!-- ========  no use  ======== -->
 
     <path name="anc-type-voice-anc-headphone-mode">
         <ctl name="ANC Slot" value="6" />
@@ -3863,6 +4308,62 @@
     <path name="anc-type-voice-anc-headphone-eq2-wv-mode">
         <ctl name="ANC Slot" value="11" />
         <path name="anc-mux-on" />
+    </path>
+
+    <path name="anc-rx-inp-mix1-off">
+        <ctl name="RX1 MIX1 INP1" value="ZERO" />
+        <ctl name="RX2 MIX1 INP1" value="ZERO" />
+    </path>
+
+    <path name="anc-rx-inp-mix2-iir">
+        <ctl name="RX1 MIX2 INP1" value="IIR1" />
+        <ctl name="RX2 MIX2 INP1" value="IIR2" />
+    </path>
+
+    <path name="anc-slim-rx-mux-off">
+        <ctl name="SLIM RX1 MUX" value="ZERO" />
+        <ctl name="SLIM RX2 MUX" value="ZERO" />
+    </path>
+
+    <path name="anc-slim-rx1-mux-aif">
+        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+    </path>
+
+    <path name="anc-slim-rx2-mux-aif">
+        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+    </path>
+
+    <path name="anc-dec-vol-zero">
+        <ctl name="DEC4 Volume" value="0" />
+        <ctl name="DEC5 Volume" value="0" />
+    </path>
+
+    <path name="format-s16le">
+        <ctl name="SLIM_0_RX Format" value="S16_LE" />
+    </path>
+
+    <path name="format-s24le">
+        <ctl name="SLIM_0_RX Format" value="S24_LE" />
+    </path>
+
+    <path name="samplerate-48khz">
+        <ctl name="SLIM_0_RX SampleRate" value="KHZ_48" />
+    </path>
+
+    <path name="samplerate-96khz">
+        <ctl name="SLIM_0_RX SampleRate" value="KHZ_96" />
+    </path>
+
+    <path name="samplerate-192khz">
+        <ctl name="SLIM_0_RX SampleRate" value="KHZ_192" />
+    </path>
+
+    <path name="anc-preparation-rx">
+        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+        <ctl name="SLIM_0_RX Channels" value="Two" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
     </path>
 
 </mixer>
