@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9dd57b6_beb67020",
+        "filename": "configs/audio/mixer_paths.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 21290
+      },
+      "writtenOn": "2019-12-12T21:12:59Z",
+      "side": 0,
+      "message": "probably unnecessary to drop that even though it seems to be unused.",
+      "revId": "1d192f28fd0bc732802ef0677ae46a7705aa4595",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
