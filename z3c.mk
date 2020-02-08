@@ -53,6 +53,10 @@ PRODUCT_COPY_FILES += \
 # Properties
 include $(DEVICE_PATH)/system_prop.mk
 
+# Recovery
+PRODUCT_PACKAGES += \
+    logo.rle
+
 # Sensors
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensor_def_qcomdev.conf:system/etc/sensor_def_qcomdev.conf
