@@ -160,7 +160,7 @@ etc/tfa98xx/coldboot.patch:vendor/etc/tfa98xx/coldboot.patch
 etc/tfa98xx/FMSpeaker_btm.eq:vendor/etc/tfa98xx/FMSpeaker_btm.eq
 etc/tfa98xx/FMSpeaker_btm.preset:vendor/etc/tfa98xx/FMSpeaker_btm.preset
 etc/tfa98xx/FMSpeaker_top.eq:vendor/etc/tfa98xx/FMSpeaker_top.eq
-etc/tfa98xx/FMSpeaker_top.preset:vendor/etc/tfa98xx/FMSpeaker_top.reset
+etc/tfa98xx/FMSpeaker_top.preset:vendor/etc/tfa98xx/FMSpeaker_top.preset
 etc/tfa98xx/HiFiSpeaker_btm.eq:vendor/etc/tfa98xx/HiFiSpeaker_btm.eq
 etc/tfa98xx/HiFiSpeaker_btm.preset:vendor/etc/tfa98xx/HiFiSpeaker_btm.preset
 etc/tfa98xx/HiFiSpeakerRing_btm.eq:vendor/etc/tfa98xx/HiFiSpeakerRing_btm.eq
