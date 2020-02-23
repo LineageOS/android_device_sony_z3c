@@ -18,8 +18,6 @@
 # Inherit shinano-common definitions
 $(call inherit-product, device/sony/shinano-common/shinano.mk)
 
-DEVICE_PATH := device/sony/z3c
-
 # Audio configs
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
@@ -43,11 +41,11 @@ PRODUCT_PACKAGES += \
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(DEVICE_PATH)/overlay \
-    $(DEVICE_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/overlay-lineage
 
 # Properties
-include $(DEVICE_PATH)/system_prop.mk
+include $(LOCAL_PATH)/system_prop.mk
 
 # Recovery
 PRODUCT_PACKAGES += \
