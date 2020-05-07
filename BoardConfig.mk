@@ -32,9 +32,6 @@ TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_PATH)/include
 # Kernel properties
 TARGET_KERNEL_CONFIG := lineageos_shinano_aries_defconfig
 
-# Partition information
-BOARD_VOLD_MAX_PARTITIONS := 25
-
 # Power
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/clearpad/wakeup_gesture"
 
