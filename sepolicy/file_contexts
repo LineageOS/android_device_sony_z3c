@@ -1,2 +1,0 @@
-# Lineage hardware
-/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.z3c                  u:object_r:hal_lineage_touch_default_exec:s0
