@@ -55,6 +55,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
+# Soong
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
+
 # Thermal manager
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermanager.xml:$(TARGET_COPY_OUT_VENDOR)/etc/thermanager.xml
