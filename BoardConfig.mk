@@ -38,5 +38,9 @@ TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/clearpad/wakeup_gesture"
 # SELinux
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
+# Soong
+PRODUCT_SOONG_NAMESPACES += \
+    device/sony/z3c
+
 # Inherit from proprietary files
 include vendor/sony/z3c/BoardConfigVendor.mk
