@@ -30,6 +30,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.semc.version.cust_revision=R5D \
     ro.semc.product.model=D5803 \
     ro.semc.ms_type_id=PM-0810-BV
+    ro.vendor.sensors.smd=false
 
 # LCD
 PRODUCT_PROPERTY_OVERRIDES += \
